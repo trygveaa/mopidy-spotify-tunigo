@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+import requests
+
 from mopidy import backend
 from mopidy.models import Ref
 
@@ -30,9 +32,27 @@ class SpotifyTunigoLibraryProvider(backend.LibraryProvider):
             return []
 
         if variant == 'genres':
-            return []
+            if identifier:
+                playlists = []
+                for item in self._get(identifier):
+                    playlists.append(
+                        Ref.playlist(uri=item['playlist']['uri'],
+                                     name=item['playlist']['title']))
+                return playlists
+            else:
+                genres = []
+                for item in self._get('genres'):
+                    genres.append(Ref.directory(
+                        uri='spotifytunigo:genres:{0}'
+                            .format(item['genre']['templateName']),
+                        name=item['genre']['name']))
+                return genres
 
         if variant == 'releases':
             return []
 
         return []
+
+    def _get(self, identifier):
+        return requests.get('https://api.tunigo.com/v3/space/{0}?per_page=1000'
+                            .format(identifier)).json()['items']
