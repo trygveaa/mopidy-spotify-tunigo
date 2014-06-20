@@ -38,7 +38,7 @@ class SpotifyTunigoLibraryProvider(backend.LibraryProvider):
                 return self._fetch_genres()
 
         if variant == 'releases':
-            return []
+            return self._fetch_releases()
 
         return []
 
@@ -64,3 +64,11 @@ class SpotifyTunigoLibraryProvider(backend.LibraryProvider):
                     uri='spotifytunigo:genres:{0}'.format(genre_id),
                     name=item['genre']['name']))
         return genres
+
+    def _fetch_releases(self):
+        playlists = []
+        for item in self._get('new-releases'):
+            name = '{0} - {1}'.format(item['release']['artistName'],
+                                      item['release']['albumName'])
+            playlists.append(Ref.album(uri=item['release']['uri'], name=name))
+        return playlists
