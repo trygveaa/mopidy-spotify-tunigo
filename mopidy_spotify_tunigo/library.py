@@ -29,7 +29,7 @@ class SpotifyTunigoLibraryProvider(backend.LibraryProvider):
         variant, identifier = translator.parse_uri(uri.lower())
 
         if variant == 'toplists':
-            return []
+            return self._fetch_playlists(variant)
 
         if variant == 'genres':
             if identifier:
@@ -57,7 +57,8 @@ class SpotifyTunigoLibraryProvider(backend.LibraryProvider):
         genres = []
         for item in self._get('genres'):
             genre_id = item['genre']['templateName']
-            genres.append(Ref.directory(
-                uri='spotifytunigo:genres:{0}'.format(genre_id),
-                name=item['genre']['name']))
+            if genre_id != 'toplists':
+                genres.append(Ref.directory(
+                    uri='spotifytunigo:genres:{0}'.format(genre_id),
+                    name=item['genre']['name']))
         return genres
