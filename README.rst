@@ -38,6 +38,8 @@ The following configuration values are available:
 
 - ``spotify_tunigo/enabled``: If the Spotify-Tunigo extension should be enabled
   or not.
+- ``spotify_tunigo/region``: The region to fetch playlists and releases for.
+  Either "all" or a two letter country code. Defaults to "all".
 
 
 Project resources

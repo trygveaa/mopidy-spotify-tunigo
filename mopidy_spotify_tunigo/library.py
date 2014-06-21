@@ -43,8 +43,10 @@ class SpotifyTunigoLibraryProvider(backend.LibraryProvider):
         return []
 
     def _get(self, identifier):
-        return requests.get('https://api.tunigo.com/v3/space/{0}?per_page=1000'
-                            .format(identifier)).json()['items']
+        uri = ('https://api.tunigo.com/v3/space/{0}?region={1}&per_page=1000'
+               .format(identifier,
+                       self.backend.config['spotify_tunigo']['region']))
+        return requests.get(uri).json()['items']
 
     def _fetch_playlists(self, genre):
         playlists = []
