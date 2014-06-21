@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+import time
+
 import requests
 
 from mopidy import backend
@@ -15,7 +17,9 @@ class SpotifyTunigoLibraryProvider(backend.LibraryProvider):
     def __init__(self, *args, **kwargs):
         super(SpotifyTunigoLibraryProvider, self).__init__(*args, **kwargs)
 
-        self._root = [Ref.directory(uri='spotifytunigo:toplists',
+        self._root = [Ref.directory(uri='spotifytunigo:featured',
+                                    name='Featured Playlists'),
+                      Ref.directory(uri='spotifytunigo:toplists',
                                     name='Top Lists'),
                       Ref.directory(uri='spotifytunigo:genres',
                                     name='Genres & Moods'),
@@ -27,6 +31,11 @@ class SpotifyTunigoLibraryProvider(backend.LibraryProvider):
             return self._root
 
         variant, identifier = translator.parse_uri(uri.lower())
+
+        if variant == 'featured':
+            return self._fetch_playlists(
+                'featured-playlists',
+                'dt={0}'.format(time.strftime('%FT%T')))
 
         if variant == 'toplists':
             return self._fetch_playlists(variant)
@@ -42,15 +51,17 @@ class SpotifyTunigoLibraryProvider(backend.LibraryProvider):
 
         return []
 
-    def _get(self, identifier):
+    def _get(self, identifier, options=''):
         uri = ('https://api.tunigo.com/v3/space/{0}?region={1}&per_page=1000'
                .format(identifier,
                        self.backend.config['spotify_tunigo']['region']))
+        if options:
+            uri = '{0}&{1}'.format(uri, options)
         return requests.get(uri).json()['items']
 
-    def _fetch_playlists(self, genre):
+    def _fetch_playlists(self, genre, options=''):
         playlists = []
-        for item in self._get(genre):
+        for item in self._get(genre, options):
             playlists.append(Ref.playlist(uri=item['playlist']['uri'],
                                           name=item['playlist']['title']))
         return playlists
