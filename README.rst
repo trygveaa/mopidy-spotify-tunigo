@@ -2,6 +2,22 @@
 Mopidy-Spotify-Tunigo
 *********************
 
+.. image:: https://img.shields.io/pypi/v/Mopidy-Spotify-Tunigo.svg?style=flat
+    :target: https://pypi.python.org/pypi/Mopidy-Spotify-Tunigo/
+    :alt: Latest PyPI version
+
+.. image:: https://img.shields.io/pypi/dm/Mopidy-Spotify-Tunigo.svg?style=flat
+    :target: https://pypi.python.org/pypi/Mopidy-Spotify-Tunigo/
+    :alt: Number of PyPI downloads
+
+.. image:: https://img.shields.io/travis/trygveaa/mopidy-spotify-tunigo/master.png?style=flat
+    :target: https://travis-ci.org/trygveaa/mopidy-spotify-tunigo
+    :alt: Travis CI build status
+
+.. image:: https://img.shields.io/coveralls/trygveaa/mopidy-spotify-tunigo/master.svg?style=flat
+   :target: https://coveralls.io/r/trygveaa/mopidy-spotify-tunigo?branch=master
+   :alt: Test coverage
+
 `Mopidy <http://www.mopidy.com/>`_ extension for providing the browse feature
 of `Spotify <http://www.spotify.com/>`_. This lets you browse playlists, genres
 and new releases.
@@ -47,7 +63,7 @@ Project resources
 
 - `Source code <https://github.com/trygveaa/mopidy-spotify-tunigo>`_
 - `Issue tracker <https://github.com/trygveaa/mopidy-spotify-tunigo/issues>`_
-- `Download development snapshot <https://github.com/trygveaa/mopidy-spotify-tunigo/tarball/master#egg=Mopidy-Spotify-Tunigo-dev>`_
+- `Download development snapshot <https://github.com/trygveaa/mopidy-spotify-tunigo/archive/master.tar.gz#egg=Mopidy-Spotify-Tunigo-dev>`_
 
 
 Changelog
