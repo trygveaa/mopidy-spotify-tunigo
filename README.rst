@@ -71,7 +71,14 @@ Project resources
 Changelog
 =========
 
-v0.1.0 (UNRELEASED)
+v0.2.0 (2014-06-23)
+-------------------
+
+ - Move Tunigo API into a separate library
+ - Add option to specify cache time
+ - List top tracks and sub genres in each genre
+
+v0.1.0 (2014-06-21)
 -------------------
 
 - Initial release.
