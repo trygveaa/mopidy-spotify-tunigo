@@ -20,6 +20,7 @@ class ExtensionTest(unittest.TestCase):
 
         schema = ext.get_config_schema()
 
-        # TODO Test the content of your config schema
+        self.assertIn('region', schema)
+        self.assertIn('cache_time', schema)
 
     # TODO Write more tests
