@@ -16,7 +16,8 @@ class SpotifyTunigoLibraryProvider(backend.LibraryProvider):
         super(SpotifyTunigoLibraryProvider, self).__init__(*args, **kwargs)
 
         self._tunigo = tunigo.Tunigo(
-            region=self.backend.config['spotify_tunigo']['region'])
+            region=self.backend.config['spotify_tunigo']['region'],
+            cache_time=self.backend.config['spotify_tunigo']['cache_time'])
 
         self._root = [Ref.directory(uri='spotifytunigo:featured',
                                     name='Featured Playlists'),

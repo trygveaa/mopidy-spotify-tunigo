@@ -21,6 +21,7 @@ class Extension(ext.Extension):
     def get_config_schema(self):
         schema = super(Extension, self).get_config_schema()
         schema['region'] = config.String()
+        schema['cache_time'] = config.Integer(minimum=0)
         return schema
 
     def setup(self, registry):

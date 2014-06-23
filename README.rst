@@ -56,6 +56,8 @@ The following configuration values are available:
   or not.
 - ``spotify_tunigo/region``: The region to fetch playlists and releases for.
   Either "all" or a two letter country code. Defaults to "all".
+- ``spotify_tunigo/cache_time``: The amount of seconds to cache the results
+  from the API. A value of 0 will disable the cache. Defaults to 3600.
 
 
 Project resources
