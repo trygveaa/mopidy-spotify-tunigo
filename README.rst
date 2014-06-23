@@ -35,6 +35,8 @@ Dependencies
 - ``Mopidy-Spotify`` > 1.1.3. The Mopidy extension for playing music from
   Spotify.
 
+- ``Python-Tunigo``. A library for accessing the Tunigo API.
+
 
 Installation
 ============
