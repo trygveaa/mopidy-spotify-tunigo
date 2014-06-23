@@ -32,7 +32,7 @@ class SpotifyTunigoLibraryProvider(backend.LibraryProvider):
         if uri == self.root_directory.uri:
             return self._root
 
-        variant, identifier = translator.parse_uri(uri.lower())
+        variant, identifier, subidentifier = translator.parse_uri(uri.lower())
 
         if variant == 'featured':
             return translator.to_mopidy_playlists(
@@ -44,8 +44,13 @@ class SpotifyTunigoLibraryProvider(backend.LibraryProvider):
 
         if variant == 'genres':
             if identifier:
-                return translator.to_mopidy_playlists(
-                    self._tunigo.get_genre_playlists(identifier))
+                if subidentifier:
+                    return translator.to_mopidy_playlists(
+                        self._tunigo.get_genre_playlists(identifier,
+                                                         subidentifier))
+                else:
+                    return translator.genres_to_sub_genres_mopidy_directories(
+                        self._tunigo.get_genres(), identifier)
             else:
                 return translator.genres_to_mopidy_directories(
                     self._tunigo.get_genres())
