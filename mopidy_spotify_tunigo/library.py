@@ -1,8 +1,6 @@
 from __future__ import unicode_literals
 
-import time
-
-import requests
+import tunigo
 
 from mopidy import backend
 from mopidy.models import Ref
@@ -16,6 +14,9 @@ class SpotifyTunigoLibraryProvider(backend.LibraryProvider):
 
     def __init__(self, *args, **kwargs):
         super(SpotifyTunigoLibraryProvider, self).__init__(*args, **kwargs)
+
+        self._tunigo = tunigo.Tunigo(
+            region=self.backend.config['spotify_tunigo']['region'])
 
         self._root = [Ref.directory(uri='spotifytunigo:featured',
                                     name='Featured Playlists'),
@@ -33,53 +34,23 @@ class SpotifyTunigoLibraryProvider(backend.LibraryProvider):
         variant, identifier = translator.parse_uri(uri.lower())
 
         if variant == 'featured':
-            return self._fetch_playlists(
-                'featured-playlists',
-                'dt={}'.format(time.strftime('%FT%T')))
+            return translator.to_mopidy_playlists(
+                self._tunigo.get_featured_playlists())
 
         if variant == 'toplists':
-            return self._fetch_playlists(variant)
+            return translator.to_mopidy_playlists(
+                self._tunigo.get_top_lists())
 
         if variant == 'genres':
             if identifier:
-                return self._fetch_playlists(identifier)
+                return translator.to_mopidy_playlists(
+                    self._tunigo.get_genre_playlists(identifier))
             else:
-                return self._fetch_genres()
+                return translator.genres_to_mopidy_directories(
+                    self._tunigo.get_genres())
 
         if variant == 'releases':
-            return self._fetch_releases()
+            return translator.releases_to_mopidy_albums(
+                self._tunigo.get_new_releases())
 
         return []
-
-    def _get(self, identifier, options=''):
-        uri = ('https://api.tunigo.com/v3/space/{}?region={}&per_page=1000'
-               .format(identifier,
-                       self.backend.config['spotify_tunigo']['region']))
-        if options:
-            uri = '{}&{}'.format(uri, options)
-        return requests.get(uri).json()['items']
-
-    def _fetch_playlists(self, genre, options=''):
-        playlists = []
-        for item in self._get(genre, options):
-            playlists.append(Ref.playlist(uri=item['playlist']['uri'],
-                                          name=item['playlist']['title']))
-        return playlists
-
-    def _fetch_genres(self):
-        genres = []
-        for item in self._get('genres'):
-            genre_id = item['genre']['templateName']
-            if genre_id != 'toplists':
-                genres.append(Ref.directory(
-                    uri='spotifytunigo:genres:{}'.format(genre_id),
-                    name=item['genre']['name']))
-        return genres
-
-    def _fetch_releases(self):
-        playlists = []
-        for item in self._get('new-releases'):
-            name = '{} - {}'.format(item['release']['artistName'],
-                                    item['release']['albumName'])
-            playlists.append(Ref.album(uri=item['release']['uri'], name=name))
-        return playlists
