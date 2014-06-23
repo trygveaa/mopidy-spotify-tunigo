@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 import unittest
 
-from mopidy_spotify_tunigo import Extension, frontend as frontend_lib
+from mopidy_spotify_tunigo import Extension
 
 
 class ExtensionTest(unittest.TestCase):
