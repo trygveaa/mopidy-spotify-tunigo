@@ -1,11 +1,11 @@
 from __future__ import unicode_literals
 
-import tunigo
-
 from mopidy import backend
 from mopidy.models import Ref
 
-from . import translator
+import tunigo
+
+from mopidy_spotify_tunigo import translator
 
 
 class SpotifyTunigoLibraryProvider(backend.LibraryProvider):
