@@ -30,9 +30,9 @@ change at any time.
 Dependencies
 ============
 
-- ``Mopidy`` > 0.18.3. The music server that Mopidy-Spotify-Tunigo extends.
+- ``Mopidy`` >= 0.19.0. The music server that Mopidy-Spotify-Tunigo extends.
 
-- ``Mopidy-Spotify`` > 1.1.3. The Mopidy extension for playing music from
+- ``Mopidy-Spotify`` >= 1.2.0. The Mopidy extension for playing music from
   Spotify.
 
 - ``Python-Tunigo``. A library for accessing the Tunigo API.
