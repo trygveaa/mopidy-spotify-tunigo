@@ -73,6 +73,13 @@ Project resources
 Changelog
 =========
 
+v0.2.1 (2014-07-21)
+-------------------
+
+- Update dependencies
+- Fix flake8 errors, unused imports and docs syntax
+- Test config options
+
 v0.2.0 (2014-06-23)
 -------------------
 
