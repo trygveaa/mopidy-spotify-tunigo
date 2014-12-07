@@ -27,7 +27,7 @@ setup(
         'setuptools',
         'Mopidy >= 0.19.0',
         'Pykka >= 1.1',
-        'mopidy-spotify >= 1.2.0',
+        'Mopidy-Spotify >= 1.2.0',
         'tunigo',
     ],
     test_suite='nose.collector',
