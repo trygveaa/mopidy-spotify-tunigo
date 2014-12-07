@@ -41,12 +41,19 @@ Dependencies
 Installation
 ============
 
-Install by running::
+Debian/Ubuntu/Raspbian: Install the ``mopidy-spotify-tunigo`` package from
+`apt.mopidy.com <http://apt.mopidy.com/>`_::
+
+    sudo apt-get install mopidy-spotify-tunigo
+
+Arch Linux: Install the ``mopidy-spotify-tunigo`` package from
+`AUR <https://aur.archlinux.org/packages/mopidy-spotify/>`_, e.g.::
+
+    yaourt -S mopidy-spotify-tunigo
+
+Else: Install the ``Mopidy-Spotify-Tunigo`` package from PyPI::
 
     pip install Mopidy-Spotify-Tunigo
-
-Or, if available, install the Debian/Ubuntu package from `apt.mopidy.com
-<http://apt.mopidy.com/>`_.
 
 
 Configuration
