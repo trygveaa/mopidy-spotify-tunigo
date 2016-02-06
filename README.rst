@@ -69,6 +69,13 @@ The following configuration values are available:
   from the API. A value of 0 will disable the cache. Defaults to 3600.
 
 
+License
+=======
+
+Mopidy-Spotify-Tunigo is licensed under the `Apache License, Version 2.0
+<http://www.apache.org/licenses/LICENSE-2.0>`_.
+
+
 Project resources
 =================
 
