@@ -1,0 +1,11 @@
+# Check code style, errors, etc
+flake8
+flake8-import-order
+
+# Mock dependencies in tests
+mock
+
+# Test runners
+pytest
+pytest-cov
+tox

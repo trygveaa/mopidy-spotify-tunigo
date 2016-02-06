@@ -1,8 +1,10 @@
-include .coveragerc
+include *.py
+include *.rst
+include *.txt
 include .travis.yml
 include LICENSE
 include MANIFEST.in
-include README.rst
 include mopidy_spotify_tunigo/ext.conf
+include tox.ini
 
 recursive-include tests *.py

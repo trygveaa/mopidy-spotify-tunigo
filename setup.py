@@ -24,16 +24,11 @@ setup(
     zip_safe=False,
     include_package_data=True,
     install_requires=[
-        'setuptools',
         'Mopidy >= 0.19.0',
-        'Pykka >= 1.1',
         'Mopidy-Spotify >= 1.2.0',
+        'Pykka >= 1.1',
+        'setuptools',
         'tunigo',
-    ],
-    test_suite='nose.collector',
-    tests_require=[
-        'nose',
-        'mock >= 1.0',
     ],
     entry_points={
         'mopidy.ext': [
@@ -46,6 +41,9 @@ setup(
         'License :: OSI Approved :: Apache Software License',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: Implementation :: CPython',
+        'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Multimedia :: Sound/Audio :: Players',
     ],
 )

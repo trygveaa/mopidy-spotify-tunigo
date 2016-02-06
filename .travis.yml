@@ -1,3 +1,6 @@
+sudo: required
+dist: trusty
+
 language: python
 
 python:
@@ -7,8 +10,13 @@ env:
   - TOX_ENV=py27
   - TOX_ENV=flake8
 
+before_install:
+  - "wget -q -O - https://apt.mopidy.com/mopidy.gpg | sudo apt-key add -"
+  - "sudo wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/jessie.list"
+  - "sudo apt-get update -qq"
+  - "sudo apt-get install -y gir1.2-gst-plugins-base-1.0 gir1.2-gstreamer-1.0 python-gst-1.0 libffi-dev libspotify-dev python-all-dev"
+
 install:
-  - "python setup.py install"
   - "pip install tox"
 
 script:
@@ -16,4 +24,3 @@ script:
 
 after_success:
   - "if [ $TOX_ENV == 'py27' ]; then pip install coveralls; coveralls; fi"
-
