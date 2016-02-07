@@ -35,7 +35,7 @@ def tunigo_mock():
 @pytest.fixture
 def backend_mock(config):
     backend_mock = mock.Mock(spec=backend.SpotifyTunigoBackend)
-    backend_mock.config = config
+    backend_mock._config = config
     return backend_mock
 
 

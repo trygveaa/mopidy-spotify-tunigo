@@ -11,7 +11,7 @@ class SpotifyTunigoBackend(pykka.ThreadingActor, backend.Backend):
     def __init__(self, config, audio):
         super(SpotifyTunigoBackend, self).__init__()
 
-        self.config = config
+        self._config = config
 
         self.library = SpotifyTunigoLibraryProvider(backend=self)
 

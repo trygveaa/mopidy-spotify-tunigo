@@ -13,12 +13,12 @@ class SpotifyTunigoLibraryProvider(backend.LibraryProvider):
         uri='spotifytunigo:directory',
         name='Spotify Browse')
 
-    def __init__(self, *args, **kwargs):
-        super(SpotifyTunigoLibraryProvider, self).__init__(*args, **kwargs)
+    def __init__(self, backend):
+        self._config = backend._config['spotify_tunigo']
 
         self._tunigo = Tunigo(
-            region=self.backend.config['spotify_tunigo']['region'],
-            cache_time=self.backend.config['spotify_tunigo']['cache_time'])
+            region=self._config['region'],
+            cache_time=self._config['cache_time'])
 
         self._root = [
             Ref.directory(
