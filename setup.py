@@ -28,7 +28,7 @@ setup(
         'Mopidy-Spotify >= 1.2.0',
         'Pykka >= 1.1',
         'setuptools',
-        'tunigo',
+        'tunigo >= 1.0.0',
     ],
     entry_points={
         'mopidy.ext': [

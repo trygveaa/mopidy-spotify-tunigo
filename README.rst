@@ -35,7 +35,7 @@ Dependencies
 - ``Mopidy-Spotify`` >= 1.2.0. The Mopidy extension for playing music from
   Spotify.
 
-- ``Python-Tunigo``. A library for accessing the Tunigo API.
+- ``Python-Tunigo`` >= 1.0.0. A library for accessing the Tunigo API.
 
 
 Installation
@@ -93,6 +93,7 @@ Changelog
 v1.0.0 (UNRELEASED)
 -------------------
 
+- Support using a proxy when connecting to Tunigo. (Fixes: #6)
 - Add a config option for only returning the genre playlists for a genre,
   instead of an extra level with the top tracks and sub genres for the genre as
   well.

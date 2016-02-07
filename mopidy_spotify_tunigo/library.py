@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from mopidy import backend
+from mopidy import backend, httpclient
 from mopidy.models import Ref
 
 from mopidy_spotify_tunigo import translator
@@ -16,9 +16,12 @@ class SpotifyTunigoLibraryProvider(backend.LibraryProvider):
     def __init__(self, backend):
         self._config = backend._config['spotify_tunigo']
 
+        proxy = httpclient.format_proxy(backend._config['proxy'])
+
         self._tunigo = Tunigo(
             region=self._config['region'],
-            cache_time=self._config['cache_time'])
+            cache_time=self._config['cache_time'],
+            proxies={'http': proxy, 'https': proxy})
 
         self._root = [
             Ref.directory(
