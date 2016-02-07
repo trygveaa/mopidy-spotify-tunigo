@@ -59,3 +59,12 @@ class TestSpotifyTunigoLibraryProvider(object):
         provider.browse('spotifytunigo:releases')
 
         tunigo_mock.get_new_releases.assert_called_once_with()
+
+    def test_returns_playlists_for_genre_when_sub_genres_config_is_false(
+            self, config, provider, tunigo_mock):
+        config['spotify_tunigo']['sub_genres'] = False
+
+        provider.browse('spotifytunigo:genres:genre0')
+
+        tunigo_mock.get_genre_playlists.assert_called_once_with(
+            'genre0', 'all')

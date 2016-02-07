@@ -50,10 +50,10 @@ class SpotifyTunigoLibraryProvider(backend.LibraryProvider):
 
         if variant == 'genres':
             if identifier:
-                if subidentifier:
+                if subidentifier or not self._config['sub_genres']:
                     return translator.to_mopidy_playlists(
                         self._tunigo.get_genre_playlists(
-                            identifier, subidentifier))
+                            identifier, subidentifier or 'all'))
                 else:
                     return translator.genres_to_sub_genres_mopidy_directories(
                         self._tunigo.get_genres(), identifier)

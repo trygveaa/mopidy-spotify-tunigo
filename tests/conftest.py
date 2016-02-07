@@ -20,6 +20,7 @@ def config(tmpdir):
         },
         'spotify_tunigo': {
             'region': 'no',
+            'sub_genres': True,
             'cache_time': 3600,
         }
     }

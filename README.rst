@@ -66,6 +66,8 @@ The following configuration values are available:
 - ``spotify_tunigo/region``: The region to fetch playlists and releases for.
   The value should be a two letter country code if set. Defaults to empty,
   which means all regions.
+- ``spotify_tunigo/sub_genres``: Whether to show sub genres and top tracks
+  under each genre. Defaults to True.
 - ``spotify_tunigo/cache_time``: The amount of seconds to cache the results
   from the API. A value of 0 will disable the cache. Defaults to 3600.
 
@@ -91,6 +93,9 @@ Changelog
 v1.0.0 (UNRELEASED)
 -------------------
 
+- Add a config option for only returning the genre playlists for a genre,
+  instead of an extra level with the top tracks and sub genres for the genre as
+  well.
 - Change default region from all to empty.
 - Add tests for all classes.
 
