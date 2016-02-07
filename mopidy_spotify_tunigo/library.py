@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from mopidy import backend
 from mopidy.models import Ref
 
-import tunigo
+from tunigo import Tunigo
 
 from mopidy_spotify_tunigo import translator
 
@@ -16,7 +16,7 @@ class SpotifyTunigoLibraryProvider(backend.LibraryProvider):
     def __init__(self, *args, **kwargs):
         super(SpotifyTunigoLibraryProvider, self).__init__(*args, **kwargs)
 
-        self._tunigo = tunigo.Tunigo(
+        self._tunigo = Tunigo(
             region=self.backend.config['spotify_tunigo']['region'],
             cache_time=self.backend.config['spotify_tunigo']['cache_time'])
 
