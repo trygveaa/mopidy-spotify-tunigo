@@ -64,7 +64,8 @@ The following configuration values are available:
 - ``spotify_tunigo/enabled``: If the Spotify-Tunigo extension should be enabled
   or not.
 - ``spotify_tunigo/region``: The region to fetch playlists and releases for.
-  Either "all" or a two letter country code. Defaults to "all".
+  The value should be a two letter country code if set. Defaults to empty,
+  which means all regions.
 - ``spotify_tunigo/cache_time``: The amount of seconds to cache the results
   from the API. A value of 0 will disable the cache. Defaults to 3600.
 
@@ -90,6 +91,7 @@ Changelog
 v1.0.0 (UNRELEASED)
 -------------------
 
+- Change default region from all to empty.
 - Add tests for all classes.
 
 v0.2.1 (2014-07-21)
