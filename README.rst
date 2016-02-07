@@ -87,19 +87,24 @@ Project resources
 Changelog
 =========
 
+v1.0.0 (UNRELEASED)
+-------------------
+
+- Add tests for all classes.
+
 v0.2.1 (2014-07-21)
 -------------------
 
-- Update dependencies
-- Fix flake8 errors, unused imports and docs syntax
-- Test config options
+- Update dependencies.
+- Fix flake8 errors, unused imports and docs syntax.
+- Test config options.
 
 v0.2.0 (2014-06-23)
 -------------------
 
-- Move Tunigo API into a separate library
-- Add option to specify cache time
-- List top tracks and sub genres in each genre
+- Move Tunigo API into a separate library.
+- Add option to specify cache time.
+- List top tracks and sub genres in each genre.
 
 v0.1.0 (2014-06-21)
 -------------------
