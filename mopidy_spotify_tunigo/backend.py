@@ -2,9 +2,9 @@ from __future__ import unicode_literals
 
 from mopidy import backend
 
-import pykka
-
 from mopidy_spotify_tunigo.library import SpotifyTunigoLibraryProvider
+
+import pykka
 
 
 class SpotifyTunigoBackend(pykka.ThreadingActor, backend.Backend):

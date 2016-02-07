@@ -3,9 +3,9 @@ from __future__ import unicode_literals
 from mopidy import backend
 from mopidy.models import Ref
 
-from tunigo import Tunigo
-
 from mopidy_spotify_tunigo import translator
+
+from tunigo import Tunigo
 
 
 class SpotifyTunigoLibraryProvider(backend.LibraryProvider):
