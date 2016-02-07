@@ -90,7 +90,7 @@ Project resources
 Changelog
 =========
 
-v1.0.0 (UNRELEASED)
+v1.0.0 (2016-02-07)
 -------------------
 
 - Support using a proxy when connecting to Tunigo. (Fixes: #6)
