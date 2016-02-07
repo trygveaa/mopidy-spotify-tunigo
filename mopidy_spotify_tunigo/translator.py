@@ -9,7 +9,7 @@ def parse_uri(uri):
     result = re.findall(r'^spotifytunigo:([a-z]+)(?::(\w+))?(?::(\w+))?$', uri)
     if result:
         return result[0]
-    return None, None
+    return None, None, None
 
 
 def to_mopidy_playlists(tunigo_playlists):
