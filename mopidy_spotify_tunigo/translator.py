@@ -34,11 +34,12 @@ def genres_to_sub_genres_mopidy_directories(tunigo_genres, genre_key):
             sub_genres.append(Ref.directory(
                 uri='spotifytunigo:genres:{}:all'.format(genre_key),
                 name='All'))
-            sub_genres.append(Ref.directory(uri=genre.playlist.uri,
-                                            name='Top tracks'))
+            sub_genres.append(Ref.directory(
+                uri=genre.playlist.uri,
+                name='Top tracks'))
             for sub_genre in genre.sub_genres:
-                uri = 'spotifytunigo:genres:{}:{}'.format(genre_key,
-                                                          sub_genre.key)
+                uri = 'spotifytunigo:genres:{}:{}'.format(
+                    genre_key, sub_genre.key)
                 sub_genres.append(Ref.directory(uri=uri, name=sub_genre.name))
             break
     return sub_genres
