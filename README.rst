@@ -1,3 +1,14 @@
+*******
+WARNING
+*******
+
+As of 2019, **the Tunigo service is no longer operational**. Thus, the
+maintenance of this extension has been stopped. Some or all of the
+functionality this extension provided is available through the `Spotify Web API
+<https://developer.spotify.com/documentation/web-api/>`_, and may be
+implemented in `Mopidy-Spotify <https://github.com/mopidy/mopidy-spotify>`_ in
+the future.
+
 *********************
 Mopidy-Spotify-Tunigo
 *********************
